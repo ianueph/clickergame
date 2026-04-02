@@ -28,7 +28,7 @@ public class GameStateRenderer {
         }
 
         terminal.flush();
-        int refreshRate = 1000 / 960;
+        int refreshRate = Settings.TICK_RATE_MS;
         TimeUnit.MILLISECONDS.sleep(refreshRate);
     }
 }

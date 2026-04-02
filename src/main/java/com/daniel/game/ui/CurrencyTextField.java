@@ -24,7 +24,7 @@ public class CurrencyTextField implements Renderable{
 
         //Draw button
         AttributedString buttonText = new AttributedString(
-                "Currency: " + gameState.getCurrency(),
+                String.format("Currency: %.3f", gameState.getCurrency()),
                 AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
         buttonText.print(terminal);
     }
