@@ -29,7 +29,6 @@ public class GameStateRenderer {
 
     public void render() throws InterruptedException {
 
-        //TODO: Rendering should be handled by JLine's Display class instead, not whatever this is.
         List<AttributedString> lines = gameState.getRenderables().stream()
                         .map(Renderable::getAttrString)
                         .toList();
