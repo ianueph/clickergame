@@ -29,7 +29,6 @@ public class GameLoop {
                     handler.handler(c).ifPresent(mouseEvent -> {
                         for (Renderable r: gameState.getRenderables()) {
                             if (r instanceof Clickable clickable) {
-
                                 if (clickable.isInside(mouseEvent.getX(), mouseEvent.getY())) {
                                     clickable.click();
                                     break;

@@ -1,9 +1,6 @@
 package com.daniel.game.core;
 
-import com.daniel.game.ui.BuildingButton;
-import com.daniel.game.ui.CurrencyTextField;
-import com.daniel.game.ui.IncrementButton;
-import com.daniel.game.ui.Renderable;
+import com.daniel.game.ui.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,25 +19,26 @@ public class GameState {
 
     //TODO: move UI stuff out of GameState
     private void setupUI() {
+        renderables.add(new EmptyLine(1));
+        renderables.add(new EmptyLine(2));
         renderables.add(new CurrencyTextField(5, 3, "Currency: %.3f",this::getCurrency));
+        renderables.add(new EmptyLine(4));
         renderables.add(new IncrementButton(5, 5, "Increment",
                 this::increment
         ));
-        Building matterCondenser = instantiateBuilding(10, 2);
-
+        renderables.add(new EmptyLine(6));
         renderables.add(new BuildingButton(
                 5,
                 7,
                 "1x Matter Condenser",
-                () -> buyBuilding(matterCondenser)
+                () -> buyBuilding(instantiateBuilding(10, 2))
         ));
-
-        Building matterCondenser10 = instantiateBuilding(100, 10);
+        renderables.add(new EmptyLine(8));
         renderables.add(new BuildingButton(
                 5,
                 9,
                 "10x Matter Condenser",
-                () -> buyBuilding(matterCondenser10)
+                () -> buyBuilding(instantiateBuilding(100, 10))
         ));
     }
 

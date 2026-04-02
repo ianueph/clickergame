@@ -23,15 +23,20 @@ public class Button implements Renderable, Clickable{
         positionCursor(x, y, terminal);
 
         //Draw button
-        AttributedString buttonText = new AttributedString(
-                text,
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.BLUE).bold());
+        AttributedString buttonText = getAttrString();
         buttonText.print(terminal);
     }
 
     @Override
+    public AttributedString getAttrString() {
+        return new AttributedString(
+                " ".repeat(getX()) + text,
+                AttributedStyle.DEFAULT.foreground(AttributedStyle.BLUE).bold());
+    }
+
+    @Override
     public boolean isInside(int mouseX, int mouseY) {
-        return mouseY == y && mouseX >= x && mouseX <= x + text.length();
+        return mouseY == y && mouseX > x && mouseX <= x + text.length();
     }
 
     @Override
@@ -43,7 +48,7 @@ public class Button implements Renderable, Clickable{
     }
 
     @Override
-    public int getY() {
+    public int y() {
         return y;
     }
 }

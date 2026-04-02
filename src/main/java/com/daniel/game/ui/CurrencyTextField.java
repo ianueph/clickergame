@@ -23,9 +23,14 @@ public class CurrencyTextField extends TextField implements Renderable{
         positionCursor(x, y, terminal);
 
         //Draw button
-        AttributedString buttonText = new AttributedString(
-                String.format(text, fieldSupplier.get()),
+        AttributedString fieldText = getAttrString();
+        fieldText.print(terminal);
+    }
+
+    @Override
+    public AttributedString getAttrString() {
+        return new AttributedString(
+                " ".repeat(getX()) + String.format(text, fieldSupplier.get()),
                 AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
-        buttonText.print(terminal);
     }
 }

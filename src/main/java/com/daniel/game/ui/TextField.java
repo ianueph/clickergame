@@ -29,12 +29,19 @@ public class TextField implements Renderable{
     }
 
     @Override
+    public AttributedString getAttrString() {
+        return new AttributedString(
+                " ".repeat(getX()) + text,
+                AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
+    }
+
+    @Override
     public int getX() {
         return x;
     }
 
     @Override
-    public int getY() {
+    public int y() {
         return y;
     }
 }
