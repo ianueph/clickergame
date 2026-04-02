@@ -22,7 +22,7 @@ public record EmptyLine(int y) implements Renderable {
     }
 
     @Override
-    public int y() {
-        return 0;
+    public int getY() {
+        return y;
     }
 }

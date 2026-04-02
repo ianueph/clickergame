@@ -41,7 +41,7 @@ public class TextField implements Renderable{
     }
 
     @Override
-    public int y() {
+    public int getY() {
         return y;
     }
 }

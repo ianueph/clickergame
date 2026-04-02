@@ -48,7 +48,7 @@ public class Button implements Renderable, Clickable{
     }
 
     @Override
-    public int y() {
+    public int getY() {
         return y;
     }
 }
