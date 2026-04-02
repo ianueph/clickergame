@@ -46,6 +46,8 @@ public class GameLoop {
                     Thread.currentThread().interrupt();
                     break;
                 }
+
+                gameState.tick();
             }
         } finally {
             // Disable mouse tracking before exiting
