@@ -1,5 +1,9 @@
-package com.daniel.game;
+package com.daniel.game.core;
 
+import com.daniel.game.ui.Clickable;
+import com.daniel.game.GameStateRenderer;
+import com.daniel.game.MouseEventHandler;
+import com.daniel.game.ui.Renderable;
 import org.jline.terminal.*;
 import org.jline.utils.*;
 

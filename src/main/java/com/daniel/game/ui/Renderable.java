@@ -1,4 +1,4 @@
-package com.daniel.game;
+package com.daniel.game.ui;
 
 import org.jline.terminal.Terminal;
 

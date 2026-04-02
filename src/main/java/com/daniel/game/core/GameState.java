@@ -1,4 +1,9 @@
-package com.daniel.game;
+package com.daniel.game.core;
+
+import com.daniel.game.ui.BuildingButton;
+import com.daniel.game.ui.CurrencyTextField;
+import com.daniel.game.ui.IncrementButton;
+import com.daniel.game.ui.Renderable;
 
 import java.util.ArrayList;
 import java.util.List;

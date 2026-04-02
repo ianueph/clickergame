@@ -1,5 +1,8 @@
 package com.daniel.game;
 
+import com.daniel.game.config.Settings;
+import com.daniel.game.core.GameState;
+import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
 import org.jline.utils.InfoCmp;
 
