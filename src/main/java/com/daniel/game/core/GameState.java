@@ -40,7 +40,7 @@ public class GameState {
                 5,
                 9,
                 "10x Matter Condenser",
-                () -> {buyBuilding(matterCondenser10);}
+                () -> buyBuilding(matterCondenser10)
         ));
     }
 
