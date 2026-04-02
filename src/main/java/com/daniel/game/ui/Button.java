@@ -8,11 +8,13 @@ public class Button implements Renderable, Clickable{
     protected int x;
     protected int y;
     protected String text;
+    protected Runnable action;
 
-    public Button(int x, int y, String text) {
+    public Button(int x, int y, String text, Runnable action) {
         this.x = x;
         this.y = y;
         this.text = text;
+        this.action = action;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class Button implements Renderable, Clickable{
     }
 
     @Override
-    public void click() { }
+    public void click() { action.run(); }
 
     @Override
     public int getX() {

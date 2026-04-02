@@ -22,12 +22,26 @@ public class GameState {
 
     //TODO: move UI stuff out of GameState
     private void setupUI() {
-        renderables.add(new CurrencyTextField(5, 3, this));
-        renderables.add(new IncrementButton(5, 5, "Increment", this));
-        renderables.add(new BuildingButton(5, 7, "1x Matter Condenser", this,
-                instantiateBuilding(10, 2)));
-        renderables.add(new BuildingButton(5, 9, "10x Matter Condenser", this,
-                instantiateBuilding(100, 20)));
+        renderables.add(new CurrencyTextField(5, 3, this::getCurrency));
+        renderables.add(new IncrementButton(5, 5, "Increment",
+                this::increment
+        ));
+        Building matterCondenser = instantiateBuilding(10, 2);
+
+        renderables.add(new BuildingButton(
+                5,
+                7,
+                "1x Matter Condenser",
+                () -> buyBuilding(matterCondenser)
+        ));
+
+        Building matterCondenser10 = instantiateBuilding(100, 10);
+        renderables.add(new BuildingButton(
+                5,
+                9,
+                "10x Matter Condenser",
+                () -> {buyBuilding(matterCondenser10);}
+        ));
     }
 
     public List<Renderable> getRenderables() {

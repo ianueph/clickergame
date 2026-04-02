@@ -1,23 +1,24 @@
 package com.daniel.game.ui;
 
-import com.daniel.game.core.GameState;
 import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
+import java.util.function.Supplier;
+
 public class CurrencyTextField implements Renderable{
 
-    private final GameState gameState;
     private final int x;
     private final int y;
+    private final Supplier<Double> fieldSupplier;
 
     /*TODO: GameState should not exist in the UI elements, UI elements should be dumb.
        (apparently?, need more inquiry to this*/
 
-    public CurrencyTextField(int x, int y, GameState gameState) {
-        this.gameState = gameState;
+    public CurrencyTextField(int x, int y, Supplier<Double> fieldSupplier) {
         this.x = x;
         this.y = y;
+        this.fieldSupplier = fieldSupplier;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class CurrencyTextField implements Renderable{
 
         //Draw button
         AttributedString buttonText = new AttributedString(
-                String.format("Currency: %.3f", gameState.getCurrency()),
+                String.format("Currency: %.3f", fieldSupplier.get()),
                 AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
         buttonText.print(terminal);
     }
