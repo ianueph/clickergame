@@ -22,7 +22,7 @@ public class GameState {
 
     //TODO: move UI stuff out of GameState
     private void setupUI() {
-        renderables.add(new CurrencyTextField(5, 3, this::getCurrency));
+        renderables.add(new CurrencyTextField(5, 3, "Currency: %.3f",this::getCurrency));
         renderables.add(new IncrementButton(5, 5, "Increment",
                 this::increment
         ));

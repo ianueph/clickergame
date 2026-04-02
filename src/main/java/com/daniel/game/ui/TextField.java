@@ -4,17 +4,16 @@ import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
-import java.util.function.Supplier;
+public class TextField implements Renderable{
 
-public class CurrencyTextField extends TextField implements Renderable{
+    protected int x;
+    protected int y;
+    protected String text;
 
-    private final Supplier<Double> fieldSupplier;
-
-    public CurrencyTextField(int x, int y, String text, Supplier<Double> fieldSupplier) {
-        super(x, y, text);
+    public TextField(int x, int y, String text) {
         this.x = x;
         this.y = y;
-        this.fieldSupplier = fieldSupplier;
+        this.text = text;
     }
 
     @Override
@@ -24,8 +23,18 @@ public class CurrencyTextField extends TextField implements Renderable{
 
         //Draw button
         AttributedString buttonText = new AttributedString(
-                String.format(text, fieldSupplier.get()),
+                text,
                 AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
         buttonText.print(terminal);
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
     }
 }
