@@ -16,7 +16,7 @@ public class GameState {
 
     public GameState(int currency) {
         this.currency = currency;
-        this.buildings = new ArrayList<Building>();
+        this.buildings = new ArrayList<>();
         setupUI();
     }
 

@@ -1,7 +1,6 @@
 package com.daniel.game.ui;
 
 import com.daniel.game.core.GameState;
-import org.jline.terminal.Terminal;
 import org.jline.utils.*;
 
 public class IncrementButton extends Button {

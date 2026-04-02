@@ -21,9 +21,8 @@ public class GameLoop {
             terminal.trackMouse(Terminal.MouseTracking.Normal);
 
             MouseEventHandler handler = new MouseEventHandler();
-            boolean running = true;
 
-            while (running) {
+            while (true) {
                 if (reader.available() > 0) {
                     int c = reader.read();
 
