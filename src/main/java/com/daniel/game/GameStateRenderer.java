@@ -22,6 +22,7 @@ public class GameStateRenderer {
 
     public void render() throws InterruptedException {
 
+        //TODO: Rendering should be handled by JLine's Display class instead, not whatever this is.
         for (Renderable r: gameState.getRenderables()) {
             terminal.puts(InfoCmp.Capability.cursor_address, r.getX(), r.getY());
             r.render(terminal);

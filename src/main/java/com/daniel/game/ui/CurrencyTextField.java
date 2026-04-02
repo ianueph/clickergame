@@ -11,6 +11,9 @@ public class CurrencyTextField implements Renderable{
     private final int x;
     private final int y;
 
+    /*TODO: GameState should not exist in the UI elements, UI elements should be dumb.
+       (apparently?, need more inquiry to this*/
+
     public CurrencyTextField(int x, int y, GameState gameState) {
         this.gameState = gameState;
         this.x = x;

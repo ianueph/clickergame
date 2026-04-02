@@ -20,6 +20,7 @@ public class GameState {
         setupUI();
     }
 
+    //TODO: move UI stuff out of GameState
     private void setupUI() {
         renderables.add(new CurrencyTextField(5, 3, this));
         renderables.add(new IncrementButton(5, 5, "Increment", this));
