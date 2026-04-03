@@ -29,7 +29,7 @@ public class GameLoop {
                 if (reader.available() > 0) {
                     int c = reader.read();
 
-                    handler.handler(c).ifPresent(mouseEvent -> {
+                    handler.handleMouseClick(c).ifPresent(mouseEvent -> {
                         for (Renderable r: gameUI.getRenderables()) {
                             if (r instanceof Clickable clickable) {
                                 if (clickable.isInside(mouseEvent.getX(), mouseEvent.getY())) {

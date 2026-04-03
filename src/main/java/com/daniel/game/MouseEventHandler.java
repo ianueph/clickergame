@@ -12,7 +12,7 @@ public class MouseEventHandler {
     private boolean mouse = false;
     private final StringBuilder buffer = new StringBuilder();
 
-    public Optional<MouseEvent> handler(int c) {
+    public Optional<MouseEvent> handleMouseClick(int c) {
         // Parse escape sequences for mouse events
         if (c == '\033') {
             esc = true;
