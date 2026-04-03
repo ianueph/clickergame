@@ -7,19 +7,17 @@ public class Building{
     private final double baseCost;
     private final double baseIncome; // per second income
     private int count;
+    private final double costCoefficient;
 
-    public Building(double baseCost, double baseIncome, int count) {
+    public Building(double baseCost, double baseIncome, int count, double costCoefficient) {
         this.baseCost = baseCost;
         this.baseIncome = baseIncome;
         this.count = count;
+        this.costCoefficient = costCoefficient;
     }
 
-    public double getBaseCost() {
-        return baseCost;
-    }
-
-    public double getBaseIncome() {
-        return baseIncome;
+    public double getCost() {
+        return baseCost * (Math.pow(1 + costCoefficient, count));
     }
 
     public int getCount() {

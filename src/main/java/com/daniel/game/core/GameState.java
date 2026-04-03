@@ -39,7 +39,7 @@ public class GameState {
     }
 
     public void buyBuilding(Building building) {
-        double cost = building.getBaseCost();
+        double cost = building.getCost();
 
         if (currency >= cost) {
             currency -= cost;
@@ -47,8 +47,8 @@ public class GameState {
         }
     }
 
-    public Building instantiateBuilding(int baseCost, int baseIncome) {
-        Building newBuilding = new Building(baseCost, baseIncome, 0);
+    public Building instantiateBuilding(int baseCost, int baseIncome, double costCoefficient) {
+        Building newBuilding = new Building(baseCost, baseIncome, 0, costCoefficient);
         buildings.add(newBuilding);
         return newBuilding;
     }
