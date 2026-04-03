@@ -2,7 +2,6 @@ package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
 import com.daniel.game.ui.Clickable;
-import com.daniel.game.GameStateRenderer;
 import com.daniel.game.MouseEventHandler;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.*;
@@ -16,7 +15,7 @@ public class GameLoop {
         GameState gameState = new GameState(50);
         GameUI gameUI = new GameUI(gameState);
         Terminal terminal = TerminalBuilder.builder().build();
-        GameStateRenderer renderer = new GameStateRenderer(gameUI, terminal);
+        GameRenderer renderer = new GameRenderer(gameUI, terminal);
         NonBlockingReader reader = terminal.reader();
 
         try {

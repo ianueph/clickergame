@@ -1,6 +1,5 @@
-package com.daniel.game;
+package com.daniel.game.core;
 
-import com.daniel.game.core.GameUI;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
@@ -9,13 +8,13 @@ import org.jline.utils.InfoCmp;
 
 import java.util.List;
 
-public class GameStateRenderer {
+public class GameRenderer {
 
     private final Terminal terminal;
     private final GameUI gameUI;
     private final Display display;
 
-    public GameStateRenderer(GameUI gameUI, Terminal terminal) {
+    public GameRenderer(GameUI gameUI, Terminal terminal) {
         this.terminal = terminal;
         this.gameUI = gameUI;
         this.display = new Display(terminal, true);
