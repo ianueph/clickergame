@@ -21,6 +21,6 @@ public class DynamicTextField extends TextField implements Renderable{
     }
 
     private String formatText(String input) {
-        return  String.format(text, fieldSupplier.get());
+        return  String.format(input, fieldSupplier.get());
     }
 }

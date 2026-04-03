@@ -31,11 +31,6 @@ public class TextField implements Renderable{
         return x;
     }
 
-    @Override
-    public int getY() {
-        return y;
-    }
-
     protected String padLeft(String input) {
         return " ".repeat(getX()) + input;
     }

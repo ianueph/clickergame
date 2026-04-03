@@ -6,5 +6,4 @@ public interface Renderable {
     void setPos(int x, int y);
     AttributedString getAttrString();
     int getX();
-    int getY();
 }

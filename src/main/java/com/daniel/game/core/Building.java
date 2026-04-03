@@ -20,10 +20,6 @@ public class Building{
         return baseCost * (Math.pow(1 + costCoefficient, count));
     }
 
-    public int getCount() {
-        return count;
-    }
-
     public void addBuilding() {
         count++;
     }

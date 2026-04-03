@@ -1,6 +1,5 @@
 package com.daniel.game.ui;
 
-import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
@@ -39,10 +38,5 @@ public class Button implements Renderable, Clickable{
     @Override
     public int getX() {
         return x;
-    }
-
-    @Override
-    public int getY() {
-        return y;
     }
 }

@@ -4,19 +4,8 @@ import org.jline.utils.AttributedString;
 
 public class EmptyLine implements Renderable {
 
-    private int x;
-    private int y;
-
-    public EmptyLine(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
     @Override
-    public void setPos(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+    public void setPos(int x, int y) {}
 
     @Override
     public AttributedString getAttrString() {
@@ -26,10 +15,5 @@ public class EmptyLine implements Renderable {
     @Override
     public int getX() {
         return 0;
-    }
-
-    @Override
-    public int getY() {
-        return y;
     }
 }

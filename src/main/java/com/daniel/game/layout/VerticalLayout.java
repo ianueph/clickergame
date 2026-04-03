@@ -28,7 +28,7 @@ public class VerticalLayout {
 
     public void addSpacing(int lines) {
         for (int i = 0; i < lines; i++) {
-            add(new EmptyLine(0, 0));
+            add(new EmptyLine());
         }
     }
 
