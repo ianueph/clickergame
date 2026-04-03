@@ -1,6 +1,5 @@
 package com.daniel.game.ui;
 
-import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
@@ -12,16 +11,6 @@ public class TextField implements Renderable{
 
     public TextField(String text) {
         this.text = text;
-    }
-
-    @Override
-    public void render(Terminal terminal) {
-        // Position cursor
-        positionCursor(0, y, terminal);
-
-        //Draw button
-        AttributedString buttonText = getAttrString();
-        buttonText.print(terminal);
     }
 
     @Override

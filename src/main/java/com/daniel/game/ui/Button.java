@@ -16,16 +16,6 @@ public class Button implements Renderable, Clickable{
     }
 
     @Override
-    public void render(Terminal terminal) {
-        // Position cursor
-        positionCursor(x, y, terminal);
-
-        //Draw button
-        AttributedString buttonText = getAttrString();
-        buttonText.print(terminal);
-    }
-
-    @Override
     public void setPos(int x, int y) {
         this.x = x;
         this.y = y;

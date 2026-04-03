@@ -1,4 +1,7 @@
-package com.daniel.game.ui;
+package com.daniel.game.layout;
+
+import com.daniel.game.ui.EmptyLine;
+import com.daniel.game.ui.Renderable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +15,9 @@ public class VerticalLayout {
     //TODO: Create proper lay-outing and rendering system.
     public VerticalLayout(int startX, int startY) {
         this.x = startX;
-        this.currentY = startY;
+        this.currentY = 1;
 
-        addSpacing(startY - 1, false);
+        addSpacing(startY);
     }
 
     public void add(Renderable renderable) {
@@ -26,18 +29,6 @@ public class VerticalLayout {
     public void addSpacing(int lines) {
         for (int i = 0; i < lines; i++) {
             add(new EmptyLine(0, 0));
-        }
-    }
-
-    public void addSpacing(int lines, boolean movePointer) {
-        if (movePointer) {
-            for (int i = 0; i < lines; i++) {
-                add(new EmptyLine(0, 0));
-            }
-        } else {
-            for (int i = 0; i < lines; i++) {
-                renderables.add(new EmptyLine(0, 0));
-            }
         }
     }
 
