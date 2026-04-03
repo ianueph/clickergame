@@ -1,6 +1,5 @@
 package com.daniel.game;
 
-import com.daniel.game.config.Settings;
 import com.daniel.game.core.GameUI;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
@@ -9,7 +8,6 @@ import org.jline.utils.Display;
 import org.jline.utils.InfoCmp;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class GameStateRenderer {
 
