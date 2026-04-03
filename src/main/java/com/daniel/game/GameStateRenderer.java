@@ -27,7 +27,7 @@ public class GameStateRenderer {
         display.resize(terminal.getHeight(), terminal.getWidth());
     }
 
-    public void render() throws InterruptedException {
+    public void render() {
 
         List<AttributedString> lines = gameUI.getRenderables().stream()
                         .map(Renderable::getAttrString)
@@ -35,7 +35,5 @@ public class GameStateRenderer {
         display.update(lines, 1);
 
         terminal.flush();
-        int refreshRate = Settings.TICK_RATE_MS;
-        TimeUnit.MILLISECONDS.sleep(refreshRate);
     }
 }

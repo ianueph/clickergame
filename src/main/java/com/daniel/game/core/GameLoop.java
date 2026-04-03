@@ -1,5 +1,6 @@
 package com.daniel.game.core;
 
+import com.daniel.game.config.Settings;
 import com.daniel.game.ui.Clickable;
 import com.daniel.game.GameStateRenderer;
 import com.daniel.game.MouseEventHandler;
@@ -8,6 +9,7 @@ import org.jline.terminal.*;
 import org.jline.utils.*;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class GameLoop {
     public static void main(String[] args) throws IOException {
@@ -24,6 +26,7 @@ public class GameLoop {
             MouseEventHandler handler = new MouseEventHandler();
 
             while (true) {
+                long start = System.currentTimeMillis();
                 if (reader.available() > 0) {
                     int c = reader.read();
 
@@ -39,14 +42,18 @@ public class GameLoop {
                     });
                 }
 
+                renderer.render();
+                gameState.tick();
+
                 try {
-                    renderer.render();
+                    long elapsed = System.currentTimeMillis() - start;
+                    long sleepTime = Settings.TICK_RATE_MS - elapsed;
+
+                    TimeUnit.MILLISECONDS.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     break;
                 }
-
-                gameState.tick();
             }
         } finally {
             // Disable mouse tracking before exiting
