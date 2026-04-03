@@ -2,6 +2,7 @@ package com.daniel.game;
 
 import com.daniel.game.config.Settings;
 import com.daniel.game.core.GameState;
+import com.daniel.game.core.GameUI;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
@@ -14,12 +15,12 @@ import java.util.concurrent.TimeUnit;
 public class GameStateRenderer {
 
     private final Terminal terminal;
-    private final GameState gameState;
+    private final GameUI gameUI;
     private final Display display;
 
-    public GameStateRenderer(GameState gameState, Terminal terminal) {
+    public GameStateRenderer(GameUI gameUI, Terminal terminal) {
         this.terminal = terminal;
-        this.gameState = gameState;
+        this.gameUI = gameUI;
         this.display = new Display(terminal, true);
 
         terminal.puts(InfoCmp.Capability.clear_screen);
@@ -29,7 +30,7 @@ public class GameStateRenderer {
 
     public void render() throws InterruptedException {
 
-        List<AttributedString> lines = gameState.getRenderables().stream()
+        List<AttributedString> lines = gameUI.getRenderables().stream()
                         .map(Renderable::getAttrString)
                         .toList();
         display.update(lines, 1);

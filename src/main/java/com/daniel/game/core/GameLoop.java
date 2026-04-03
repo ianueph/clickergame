@@ -12,8 +12,9 @@ import java.io.IOException;
 public class GameLoop {
     public static void main(String[] args) throws IOException {
         GameState gameState = new GameState(50);
+        GameUI gameUI = new GameUI(gameState);
         Terminal terminal = TerminalBuilder.builder().build();
-        GameStateRenderer renderer = new GameStateRenderer(gameState, terminal);
+        GameStateRenderer renderer = new GameStateRenderer(gameUI, terminal);
         NonBlockingReader reader = terminal.reader();
 
         try {
@@ -27,7 +28,7 @@ public class GameLoop {
                     int c = reader.read();
 
                     handler.handler(c).ifPresent(mouseEvent -> {
-                        for (Renderable r: gameState.getRenderables()) {
+                        for (Renderable r: gameUI.getRenderables()) {
                             if (r instanceof Clickable clickable) {
                                 if (clickable.isInside(mouseEvent.getX(), mouseEvent.getY())) {
                                     clickable.click();

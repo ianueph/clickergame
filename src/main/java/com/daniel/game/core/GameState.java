@@ -9,41 +9,10 @@ public class GameState {
 
     private double currency;
     private final List<Building> buildings;
-    private final List<Renderable> renderables = new ArrayList<>();
 
     public GameState(int currency) {
         this.currency = currency;
         this.buildings = new ArrayList<>();
-        setupUI();
-    }
-
-    //TODO: move UI stuff out of GameState
-    private void setupUI() {
-        renderables.add(new EmptyLine(1));
-        renderables.add(new EmptyLine(2));
-        renderables.add(new CurrencyTextField(5, 3, "Currency: %.3f",this::getCurrency));
-        renderables.add(new EmptyLine(4));
-        renderables.add(new IncrementButton(5, 5, "Increment",
-                this::increment
-        ));
-        renderables.add(new EmptyLine(6));
-        renderables.add(new BuildingButton(
-                5,
-                7,
-                "1x Matter Condenser",
-                () -> buyBuilding(instantiateBuilding(10, 2))
-        ));
-        renderables.add(new EmptyLine(8));
-        renderables.add(new BuildingButton(
-                5,
-                9,
-                "10x Matter Condenser",
-                () -> buyBuilding(instantiateBuilding(100, 10))
-        ));
-    }
-
-    public List<Renderable> getRenderables() {
-        return this.renderables;
     }
 
     public void increment() {
@@ -69,7 +38,7 @@ public class GameState {
         }
     }
 
-    private Building instantiateBuilding(int baseCost, int baseIncome) {
+    public Building instantiateBuilding(int baseCost, int baseIncome) {
         Building newBuilding = new Building(baseCost, baseIncome, 0);
         buildings.add(newBuilding);
         return newBuilding;
