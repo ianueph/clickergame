@@ -8,7 +8,7 @@ import java.util.List;
 public class GameUI {
 
     private final GameState gameState;
-    private final List<Renderable> renderables = new ArrayList<>();
+    private List<Renderable> renderables = new ArrayList<>();
 
     public GameUI(GameState gameState) {
         this.gameState = gameState;
@@ -16,28 +16,24 @@ public class GameUI {
     }
 
     private void setupUI() {
-        renderables.add(new EmptyLine(1));
-        renderables.add(new EmptyLine(2));
-        renderables.add(new DynamicTextField(5, 3, "Currency: %.3f",gameState::getCurrency));
-        renderables.add(new DynamicTextField(5, 4, "Income: %.3f /sec", gameState::getTotalIncomePerSecond));
-        renderables.add(new EmptyLine(5));
-        renderables.add(new IncrementButton(5, 6, "Increment",
-                gameState::increment
-        ));
-        renderables.add(new EmptyLine(7));
-        renderables.add(new BuildingButton(
-                5,
-                8,
+        VerticalLayout layout = new VerticalLayout(5, 3);
+
+        layout.add(new DynamicTextField("Currency: %.3f",gameState::getCurrency));
+        layout.add(new DynamicTextField("Income: %.3f /sec", gameState::getTotalIncomePerSecond));
+        layout.addSpacing(2);
+        layout.add(new IncrementButton("Increment", gameState::increment));
+        layout.addSpacing(1);
+        layout.add(new BuildingButton(
                 "1x Matter Condenser",
                 () -> gameState.buyBuilding(gameState.instantiateBuilding(10, 2))
         ));
-        renderables.add(new EmptyLine(9));
-        renderables.add(new BuildingButton(
-                5,
-                10,
+        layout.addSpacing(1);
+        layout.add(new BuildingButton(
                 "10x Matter Condenser",
                 () -> gameState.buyBuilding(gameState.instantiateBuilding(100, 10))
         ));
+
+        renderables = layout.getRenderables();
     }
 
     public List<Renderable> getRenderables() {

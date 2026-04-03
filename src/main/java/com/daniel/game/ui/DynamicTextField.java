@@ -9,10 +9,8 @@ public class DynamicTextField extends TextField implements Renderable{
 
     private final Supplier<Double> fieldSupplier;
 
-    public DynamicTextField(int x, int y, String text, Supplier<Double> fieldSupplier) {
-        super(x, y, text);
-        this.x = x;
-        this.y = y;
+    public DynamicTextField(String text, Supplier<Double> fieldSupplier) {
+        super(text);
         this.fieldSupplier = fieldSupplier;
     }
 

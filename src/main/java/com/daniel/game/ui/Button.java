@@ -10,9 +10,7 @@ public class Button implements Renderable, Clickable{
     protected String text;
     protected Runnable action;
 
-    public Button(int x, int y, String text, Runnable action) {
-        this.x = x;
-        this.y = y;
+    public Button(String text, Runnable action) {
         this.text = text;
         this.action = action;
     }
@@ -25,6 +23,12 @@ public class Button implements Renderable, Clickable{
         //Draw button
         AttributedString buttonText = getAttrString();
         buttonText.print(terminal);
+    }
+
+    @Override
+    public void setPos(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override

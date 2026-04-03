@@ -10,9 +10,7 @@ public class TextField implements Renderable{
     protected int y;
     protected String text;
 
-    public TextField(int x, int y, String text) {
-        this.x = x;
-        this.y = y;
+    public TextField(String text) {
         this.text = text;
     }
 
@@ -24,6 +22,12 @@ public class TextField implements Renderable{
         //Draw button
         AttributedString buttonText = getAttrString();
         buttonText.print(terminal);
+    }
+
+    @Override
+    public void setPos(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override

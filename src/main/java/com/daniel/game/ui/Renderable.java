@@ -5,6 +5,7 @@ import org.jline.utils.AttributedString;
 
 public interface Renderable {
     void render(Terminal terminal);
+    void setPos(int x, int y);
     AttributedString getAttrString();
     int getX();
     int getY();
