@@ -3,10 +3,8 @@ package com.daniel.game.ui;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
-public class TextField implements Renderable{
+public class TextField extends UIComponent implements Renderable{
 
-    protected int x;
-    protected int y;
     protected String text;
 
     public TextField(String text) {
@@ -14,21 +12,10 @@ public class TextField implements Renderable{
     }
 
     @Override
-    public void setPos(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
     public AttributedString getAttrString() {
         return new AttributedString(
                 padLeft(text),
                 getStyle());
-    }
-
-    @Override
-    public int getX() {
-        return x;
     }
 
     protected String padLeft(String input) {
