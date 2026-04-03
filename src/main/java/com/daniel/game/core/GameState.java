@@ -1,5 +1,6 @@
 package com.daniel.game.core;
 
+import com.daniel.game.config.Settings;
 import com.daniel.game.ui.*;
 
 import java.util.ArrayList;
@@ -24,7 +25,15 @@ public class GameState {
     }
 
     public void tick() {
-        currency += buildings.stream()
+        currency += getTotalIncomePerTick();
+    }
+
+    public double getTotalIncomePerSecond() {
+        return getTotalIncomePerTick() * Settings.FRAME_RATE;
+    }
+
+    private double getTotalIncomePerTick() {
+        return buildings.stream()
                 .mapToDouble(Building::getIncomePerTick)
                 .sum();
     }

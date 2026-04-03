@@ -19,20 +19,18 @@ public class TextField implements Renderable{
     @Override
     public void render(Terminal terminal) {
         // Position cursor
-        positionCursor(x, y, terminal);
+        positionCursor(0, y, terminal);
 
         //Draw button
-        AttributedString buttonText = new AttributedString(
-                text,
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
+        AttributedString buttonText = getAttrString();
         buttonText.print(terminal);
     }
 
     @Override
     public AttributedString getAttrString() {
         return new AttributedString(
-                " ".repeat(getX()) + text,
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN).bold());
+                padLeft(text),
+                getStyle());
     }
 
     @Override
@@ -43,5 +41,15 @@ public class TextField implements Renderable{
     @Override
     public int getY() {
         return y;
+    }
+
+    protected String padLeft(String input) {
+        return " ".repeat(getX()) + input;
+    }
+
+    protected AttributedStyle getStyle() {
+        return AttributedStyle.DEFAULT
+                .foreground(AttributedStyle.GREEN)
+                .bold();
     }
 }
