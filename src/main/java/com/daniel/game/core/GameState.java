@@ -3,17 +3,17 @@ package com.daniel.game.core;
 import com.daniel.game.config.Settings;
 import com.daniel.game.ui.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameState {
 
     private double currency;
-    private final List<Building> buildings;
+    private final Map<String, Building> buildings;
 
     public GameState(int currency) {
         this.currency = currency;
-        this.buildings = new ArrayList<>();
+        this.buildings = new HashMap<>();
     }
 
     public void increment() {
@@ -33,7 +33,8 @@ public class GameState {
     }
 
     private double getTotalIncomePerTick() {
-        return buildings.stream()
+        return buildings.values()
+                .stream()
                 .mapToDouble(Building::getIncomePerTick)
                 .sum();
     }
@@ -49,7 +50,15 @@ public class GameState {
 
     public Building instantiateBuilding(String id, int baseCost, int baseIncome, double costCoefficient) {
         Building newBuilding = new Building(id, baseCost, baseIncome, 0, costCoefficient);
-        buildings.add(newBuilding);
+
+
+        if (buildings.containsKey(newBuilding.getId())) {
+            throw new IllegalArgumentException(
+                    "Duplicate Building ID: " + newBuilding.getId()
+            );
+        }
+
+        buildings.put(newBuilding.getId(), newBuilding);
         return newBuilding;
     }
 }
