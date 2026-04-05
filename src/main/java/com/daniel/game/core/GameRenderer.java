@@ -18,8 +18,6 @@ public class GameRenderer {
         this.terminal = terminal;
         this.gameUI = gameUI;
         this.display = new Display(terminal, true);
-
-        terminal.puts(InfoCmp.Capability.clear_screen);
         display.clear();
         display.resize(terminal.getHeight(), terminal.getWidth());
     }

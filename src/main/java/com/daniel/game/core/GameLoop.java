@@ -3,6 +3,7 @@ package com.daniel.game.core;
 import com.daniel.game.config.Settings;
 import com.daniel.game.ui.Clickable;
 import com.daniel.game.MouseEventHandler;
+import com.daniel.game.ui.GameStatus;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.*;
 import org.jline.utils.*;
@@ -21,8 +22,11 @@ public class GameLoop {
         try {
             // Enable mouse tracking
             terminal.trackMouse(Terminal.MouseTracking.Normal);
-
             MouseEventHandler handler = new MouseEventHandler();
+
+            terminal.flush();
+            terminal.puts(InfoCmp.Capability.clear_screen);
+            terminal.flush();
 
             while (true) {
                 long start = System.currentTimeMillis();
@@ -53,6 +57,8 @@ public class GameLoop {
                     Thread.currentThread().interrupt();
                     break;
                 }
+
+
             }
         } finally {
             // Disable mouse tracking before exiting
