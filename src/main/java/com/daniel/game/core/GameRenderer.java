@@ -4,7 +4,6 @@ import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.Display;
-import org.jline.utils.InfoCmp;
 
 import java.util.List;
 
