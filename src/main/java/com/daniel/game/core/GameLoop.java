@@ -1,10 +1,7 @@
 package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
-import com.daniel.game.ui.Clickable;
 import com.daniel.game.MouseEventHandler;
-import com.daniel.game.ui.GameStatus;
-import com.daniel.game.ui.Renderable;
 import org.jline.terminal.*;
 import org.jline.utils.*;
 
@@ -34,14 +31,7 @@ public class GameLoop {
                     int c = reader.read();
 
                     handler.handleMouseClick(c).ifPresent(mouseEvent -> {
-                        for (Renderable r: gameUI.getRenderables()) {
-                            if (r instanceof Clickable clickable) {
-                                if (clickable.isInside(mouseEvent.getX(), mouseEvent.getY())) {
-                                    clickable.click();
-                                    break;
-                                }
-                            }
-                        }
+                        gameUI.handleClick(mouseEvent.getX(), mouseEvent.getY());
                     });
                 }
 

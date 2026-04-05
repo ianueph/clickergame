@@ -44,6 +44,17 @@ public class GameUI {
         renderables = layout.getRenderables();
     }
 
+    public void handleClick(int x, int y) {
+        for (Renderable r : renderables) {
+            if (r instanceof Clickable clickable) {
+                if (clickable.isInside(x, y)) {
+                    clickable.click();
+                    return;
+                }
+            }
+        }
+    }
+
     public List<Renderable> getRenderables() {
         return this.renderables;
     }
