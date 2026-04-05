@@ -8,12 +8,14 @@ public class Building{
     private final double baseIncome; // per second income
     private int count;
     private final double costCoefficient;
+    private double mult;
 
     public Building(double baseCost, double baseIncome, int count, double costCoefficient) {
         this.baseCost = baseCost;
         this.baseIncome = baseIncome;
         this.count = count;
         this.costCoefficient = costCoefficient;
+        this.mult = 1;
     }
 
     public double getCost() {
@@ -25,6 +27,14 @@ public class Building{
     }
 
     public double getIncomePerTick() {
-        return baseIncome * count / Settings.FRAME_RATE;
+        return (baseIncome * count / Settings.FRAME_RATE) * mult;
+    }
+
+    public void setMult(double mult) {
+        this.mult = mult;
+    }
+
+    public double getMult() {
+        return mult;
     }
 }
