@@ -47,8 +47,8 @@ public class GameState {
         }
     }
 
-    public Building instantiateBuilding(int baseCost, int baseIncome, double costCoefficient) {
-        Building newBuilding = new Building(baseCost, baseIncome, 0, costCoefficient);
+    public Building instantiateBuilding(String id, int baseCost, int baseIncome, double costCoefficient) {
+        Building newBuilding = new Building(id, baseCost, baseIncome, 0, costCoefficient);
         buildings.add(newBuilding);
         return newBuilding;
     }

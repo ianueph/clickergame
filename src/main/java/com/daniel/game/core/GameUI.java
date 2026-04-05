@@ -25,7 +25,7 @@ public class GameUI {
         layout.add(new IncrementButton("Increment", gameState::increment));
         layout.addSpacing(1);
 
-        Building matterCondenserX1 = gameState.instantiateBuilding(10, 1, 0.15);
+        Building matterCondenserX1 = gameState.instantiateBuilding("1xmat",10, 1, 0.15);
         layout.add(new BuildingButton(
                 "1x Matter Condenser",
                 () -> gameState.buyBuilding(matterCondenserX1)
@@ -34,7 +34,7 @@ public class GameUI {
 
         layout.addSpacing(1);
 
-        Building matterCondenserX10 = gameState.instantiateBuilding(100, 3, 0.20);
+        Building matterCondenserX10 = gameState.instantiateBuilding("10xmat",100, 3, 0.20);
         layout.add(new BuildingButton(
                 "10x Matter Condenser",
                 () -> gameState.buyBuilding(matterCondenserX10)
