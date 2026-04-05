@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameLoop {
     public static void main(String[] args) throws IOException {
-        GameState gameState = new GameState(50);
+        GameState gameState = new GameState(500);
         GameUI gameUI = new GameUI(gameState);
         Terminal terminal = TerminalBuilder.builder().build();
         GameRenderer renderer = new GameRenderer(gameUI, terminal);
