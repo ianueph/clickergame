@@ -1,0 +1,16 @@
+<buildings>
+    <building>
+        <id>its u</id>
+        <baseCost>10</baseCost>
+        <baseIncome>1</baseIncome>
+        <count>0</count>
+        <costCoefficient>0.15</costCoefficient>
+    </building>
+    <building>
+        <id>wallsocket</id>
+        <baseCost>100</baseCost>
+        <baseIncome>3</baseIncome>
+        <count>0</count>
+        <costCoefficient>0.2</costCoefficient>
+    </building>
+</buildings>

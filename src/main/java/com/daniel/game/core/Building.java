@@ -1,6 +1,8 @@
 package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Building{
 
@@ -11,7 +13,14 @@ public class Building{
     private final double costCoefficient;
     private double mult;
 
-    public Building(String id, double baseCost, double baseIncome, int count, double costCoefficient) {
+    @JsonCreator
+    public Building(
+            @JsonProperty("id") String id,
+            @JsonProperty("baseCost") double baseCost,
+            @JsonProperty("baseIncome") double baseIncome,
+            @JsonProperty("count") int count,
+            @JsonProperty("costCoefficient") double costCoefficient
+    ) {
         this.id = id;
         this.baseCost = baseCost;
         this.baseIncome = baseIncome;
@@ -43,4 +52,17 @@ public class Building{
     public String getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "id='" + id + '\'' +
+                ", baseCost=" + baseCost +
+                ", baseIncome=" + baseIncome +
+                ", count=" + count +
+                ", costCoefficient=" + costCoefficient +
+                ", mult=" + mult +
+                '}';
+    }
+
 }
