@@ -18,12 +18,12 @@ public class BuildingXMLParser {
 
         return wrapper.getBuildings().stream()
                 .collect(Collectors.toMap(Building::getId, b -> b));
-    };
+    }
 
     private static String getResourcePath(String filename) {
         return Objects.requireNonNull(BuildingXMLParser.class
                 .getClassLoader()
-                .getResource("buildings.xml")
+                .getResource(filename)
         ).getPath();
     }
 }

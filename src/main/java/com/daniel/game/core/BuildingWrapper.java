@@ -14,8 +14,4 @@ public class BuildingWrapper {
     public List<Building> getBuildings() {
         return buildings;
     }
-
-    public void setBuildings(List<Building> buildings) {
-        this.buildings = buildings;
-    }
 }
