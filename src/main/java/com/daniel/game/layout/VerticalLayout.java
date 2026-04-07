@@ -6,7 +6,7 @@ import com.daniel.game.ui.Renderable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerticalLayout {
+public class VerticalLayout implements Layout{
 
     private final List<Renderable> renderables = new ArrayList<>();
     private final int x;
@@ -20,7 +20,8 @@ public class VerticalLayout {
         addSpacing(startY);
     }
 
-    public void add(Renderable renderable) {
+    @Override
+    public void addElement(Renderable renderable) {
         renderable.setPos(x, currentY);
         renderables.add(renderable);
         currentY++;
@@ -28,10 +29,11 @@ public class VerticalLayout {
 
     public void addSpacing(int lines) {
         for (int i = 0; i < lines; i++) {
-            add(new EmptyLine());
+            addElement(new EmptyLine());
         }
     }
 
+    @Override
     public List<Renderable> getRenderables() {
         return renderables;
     }
