@@ -4,8 +4,6 @@ import com.daniel.game.config.Settings;
 import com.daniel.game.data.BuildingLoader;
 import com.daniel.game.data.UpgradeLoader;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class GameState {
@@ -14,7 +12,7 @@ public class GameState {
     private final Map<String, Building> buildings;
     private final Map<String, Upgrade> upgrades;
 
-    public GameState(int currency) throws IOException {
+    public GameState(int currency) {
         BuildingLoader buildingLoader = new BuildingLoader();
         UpgradeLoader upgradeLoader = new UpgradeLoader();
 
@@ -34,7 +32,7 @@ public class GameState {
     public double getCurrency() {
         return this.currency;
     }
-    
+
     public double getTotalIncomePerSecond() {
         return getTotalIncomePerTick() * Settings.FRAME_RATE;
     }

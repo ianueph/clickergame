@@ -1,13 +1,11 @@
 package com.daniel.game.data;
 
 import com.daniel.game.core.Upgrade;
-
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
 public class UpgradeLoader {
-    public LinkedHashMap<String, Upgrade> load() throws IOException {
+    public LinkedHashMap<String, Upgrade> load() {
         XMLParser parser = new XMLParser();
 
         UpgradeWrapper wrapper = parser.parse("upgrades.xml", UpgradeWrapper.class);

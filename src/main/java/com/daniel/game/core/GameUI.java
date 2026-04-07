@@ -3,7 +3,6 @@ package com.daniel.game.core;
 import com.daniel.game.layout.VerticalLayout;
 import com.daniel.game.ui.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,17 +25,13 @@ public class GameUI {
         layout.addSpacing(2);
         layout.addElement(new IncrementButton("Increment", gameState::increment));
 
-        try {
-            setupBuildings(layout);
-            setupUpgrades(layout);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        setupBuildings(layout);
+        setupUpgrades(layout);
 
         renderables = layout.getRenderables();
     }
 
-    private void setupBuildings(VerticalLayout layout) throws IOException {
+    private void setupBuildings(VerticalLayout layout) {
         layout.addSpacing(2); //margin top 2 lines
         layout.addElement(new TextField("Buildings"));
 
@@ -51,12 +46,12 @@ public class GameUI {
         });
     }
 
-    private void setupUpgrades(VerticalLayout layout) throws IOException {
+    private void setupUpgrades(VerticalLayout layout) {
         layout.addSpacing(2);
         layout.addElement(new TextField("Upgrades"));
 
         gameState.getUpgrades().forEach((name, upgrade) -> {
-            layout.addSpacing(1);;
+            layout.addSpacing(1);
             layout.addElement(new Button(
                     String.format("%s (+%,.3fx %s)", name, upgrade.getBaseModifier(), upgrade.getTargetBuildingID()),
                     () -> gameState.buyUpgrade(upgrade)
