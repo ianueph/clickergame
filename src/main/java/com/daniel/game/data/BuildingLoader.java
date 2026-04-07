@@ -1,4 +1,6 @@
-package com.daniel.game.core;
+package com.daniel.game.data;
+
+import com.daniel.game.core.Building;
 
 import java.io.IOException;
 import java.util.Map;

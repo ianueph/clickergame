@@ -1,7 +1,7 @@
 package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
-import com.daniel.game.ui.*;
+import com.daniel.game.data.BuildingLoader;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -1,5 +1,6 @@
-package com.daniel.game.core;
+package com.daniel.game.data;
 
+import com.daniel.game.core.Building;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class BuildingXMLParserTest {
+public class BuildingLoaderTest {
 
     @Test
     public void parse() throws IOException {

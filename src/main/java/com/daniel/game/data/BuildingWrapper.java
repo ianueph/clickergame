@@ -1,5 +1,6 @@
-package com.daniel.game.core;
+package com.daniel.game.data;
 
+import com.daniel.game.core.Building;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 

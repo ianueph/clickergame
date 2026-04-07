@@ -1,4 +1,4 @@
-package com.daniel.game.core;
+package com.daniel.game.data;
 
 import tools.jackson.dataformat.xml.XmlMapper;
 
