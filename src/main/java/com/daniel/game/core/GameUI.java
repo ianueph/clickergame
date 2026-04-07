@@ -3,6 +3,7 @@ package com.daniel.game.core;
 import com.daniel.game.layout.VerticalLayout;
 import com.daniel.game.ui.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,15 +26,13 @@ public class GameUI {
         layout.addSpacing(2);
         layout.addElement(new IncrementButton("Increment", gameState::increment));
 
-        layout.addSpacing(1);
-        Building matterCondenserX10 = gameState.instantiateBuilding("10xmat",100, 3, 0.20);
-        layout.add(new BuildingButton(
-                "wallsocket (3/s)",
-                () -> gameState.buyBuilding(matterCondenserX10)
-        ));
-        layout.add(new DynamicTextField("Rate: %,.3f /t", matterCondenserX10::getIncomePerTick));
-        layout.add(new DynamicTextField("Cost: %,.3f", matterCondenserX10::getCost));
+        try {
+            setupBuildings(layout);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+        //TODO: also do this dynamically with xml parsing, use upgrades.xml
         layout.addSpacing(2);
         layout.addElement(new TextField("Upgrades"));
         Upgrade soundcloud = gameState.instantiateUpgrade("soundcloud", "its u", 400, 0.2, 0.5);
@@ -54,6 +53,21 @@ public class GameUI {
         layout.addElement(new DynamicTextField("Cost: %,.3f", bandcamp::getCost));
 
         renderables = layout.getRenderables();
+    }
+
+    private void setupBuildings(VerticalLayout layout) throws IOException {
+        layout.addSpacing(2); //margin top 2 lines
+        layout.addElement(new TextField("Buildings"));
+
+        gameState.getBuildings().forEach((name, building) -> {
+            layout.addSpacing(1);
+            layout.addElement(new BuildingButton(
+                    String.format("%s (%,.3f/s)", name, building.getBaseIncome()),
+                    () -> gameState.buyBuilding(building)
+            ));
+            layout.addElement(new DynamicTextField("Rate: %,.3f /t", building::getIncomePerTick));
+            layout.addElement(new DynamicTextField("Cost: %,.3f", building::getCost));
+        });
     }
 
     public void handleClick(int x, int y) {
