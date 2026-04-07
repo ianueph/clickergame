@@ -53,6 +53,10 @@ public class Building{
         return id;
     }
 
+    public double getBaseIncome() {
+        return baseIncome;
+    }
+
     @Override
     public String toString() {
         return "Building{" +
