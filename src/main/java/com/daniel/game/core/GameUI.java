@@ -28,29 +28,10 @@ public class GameUI {
 
         try {
             setupBuildings(layout);
+            setupUpgrades(layout);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        //TODO: also do this dynamically with xml parsing, use upgrades.xml
-        layout.addSpacing(2);
-        layout.addElement(new TextField("Upgrades"));
-        Upgrade soundcloud = gameState.instantiateUpgrade("soundcloud", "its u", 400, 0.2, 0.5);
-        layout.addElement(new Button(
-                "soundcloud (+0.2x its u)",
-                () -> gameState.buyUpgrade(soundcloud)
-        ));
-        layout.addElement(new DynamicTextField("Current modifier: %,.3fx", soundcloud::getModifier));
-        layout.addElement(new DynamicTextField("Cost: %,.3f", soundcloud::getCost));
-
-        layout.addSpacing(1);
-        Upgrade bandcamp = gameState.instantiateUpgrade("bandcamp", "wallsocket", 1000, 0.75, 0.75);
-        layout.addElement(new Button(
-                "bandcamp (+0.75x wallsocket)",
-                () -> gameState.buyUpgrade(bandcamp)
-        ));
-        layout.addElement(new DynamicTextField("Current modifier: %,.3fx", bandcamp::getModifier));
-        layout.addElement(new DynamicTextField("Cost: %,.3f", bandcamp::getCost));
 
         renderables = layout.getRenderables();
     }
@@ -67,6 +48,21 @@ public class GameUI {
             ));
             layout.addElement(new DynamicTextField("Rate: %,.3f /t", building::getIncomePerTick));
             layout.addElement(new DynamicTextField("Cost: %,.3f", building::getCost));
+        });
+    }
+
+    private void setupUpgrades(VerticalLayout layout) throws IOException {
+        layout.addSpacing(2);
+        layout.addElement(new TextField("Upgrades"));
+
+        gameState.getUpgrades().forEach((name, upgrade) -> {
+            layout.addSpacing(1);;
+            layout.addElement(new Button(
+                    String.format("%s (+%,.3fx %s)", name, upgrade.getBaseModifier(), upgrade.getTargetBuildingID()),
+                    () -> gameState.buyUpgrade(upgrade)
+            ));
+            layout.addElement(new DynamicTextField("Current modifier: %,.3fx", upgrade::getModifier));
+            layout.addElement(new DynamicTextField("Cost: %,.3f", upgrade::getCost));
         });
     }
 

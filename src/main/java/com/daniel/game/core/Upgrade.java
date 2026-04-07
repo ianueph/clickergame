@@ -1,5 +1,8 @@
 package com.daniel.game.core;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Upgrade {
 
     private final String id;
@@ -9,7 +12,15 @@ public class Upgrade {
     private final double baseModifier;
     private final double costCoefficient;
 
-    public Upgrade(String id, String targetBuildingID, int count, double baseCost, double baseModifier, double costCoefficient) {
+    @JsonCreator
+    public Upgrade(
+        @JsonProperty("id") String id,
+        @JsonProperty("targetBuildingID") String targetBuildingID,
+        @JsonProperty("count") int count,
+        @JsonProperty("baseCost") double baseCost,
+        @JsonProperty("baseModifier") double baseModifier,
+        @JsonProperty("costCoefficient") double costCoefficient
+    ) {
         this.id = id;
         this.targetBuildingID = targetBuildingID;
         this.count = count;
@@ -40,5 +51,9 @@ public class Upgrade {
 
     public String getId() {
         return id;
+    }
+
+    public double getBaseModifier() {
+        return baseModifier;
     }
 }

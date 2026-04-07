@@ -1,0 +1,18 @@
+<upgrades>
+    <upgrade>
+        <id>soundcloud</id>
+        <targetBuildingID>its u</targetBuildingID>
+        <count>0</count>
+        <baseCost>400</baseCost>
+        <baseModifier>0.2</baseModifier>
+        <costCoefficient>0.5</costCoefficient>
+    </upgrade>
+    <upgrade>
+        <id>bandcamp</id>
+        <targetBuildingID>wallsocket</targetBuildingID>
+        <count>0</count>
+        <baseCost>1000</baseCost>
+        <baseModifier>0.75</baseModifier>
+        <costCoefficient>0.75</costCoefficient>
+    </upgrade>
+</upgrades>

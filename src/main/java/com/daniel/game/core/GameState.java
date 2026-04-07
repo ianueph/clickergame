@@ -2,6 +2,7 @@ package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
 import com.daniel.game.data.BuildingLoader;
+import com.daniel.game.data.UpgradeLoader;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,24 +15,26 @@ public class GameState {
     private final Map<String, Upgrade> upgrades;
 
     public GameState(int currency) throws IOException {
-        this.currency = currency;
         BuildingLoader buildingLoader = new BuildingLoader();
+        UpgradeLoader upgradeLoader = new UpgradeLoader();
+
+        this.currency = currency;
         this.buildings = buildingLoader.load();
-        this.upgrades = new HashMap<>();
+        this.upgrades = upgradeLoader.load();
     }
 
     public void increment() {
         this.currency += 1;
     }
 
-    public double getCurrency() {
-        return this.currency;
-    }
-
     public void tick() {
         currency += getTotalIncomePerTick();
     }
 
+    public double getCurrency() {
+        return this.currency;
+    }
+    
     public double getTotalIncomePerSecond() {
         return getTotalIncomePerTick() * Settings.FRAME_RATE;
     }
@@ -66,20 +69,7 @@ public class GameState {
         }
     }
 
-    public Upgrade instantiateUpgrade(String id, String targetBuildingID, double baseCost, double baseModifier, double costCoefficient) {
-        Upgrade newUpgrade = new Upgrade(id, targetBuildingID, 0, baseCost, baseModifier, costCoefficient);
-
-        enforceUpgradeIDUniqueness(newUpgrade);
-
-        upgrades.put(newUpgrade.getId(), newUpgrade);
-        return newUpgrade;
-    }
-
-    private void enforceUpgradeIDUniqueness(Upgrade upgrade) {
-        if (upgrades.containsKey(upgrade.getId())) {
-            throw new IllegalArgumentException(
-                    "Duplicate Upgrade ID: " + upgrade.getId()
-            );
-        }
+    public Map<String, Upgrade> getUpgrades() {
+        return upgrades;
     }
 }
