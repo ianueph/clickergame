@@ -16,6 +16,7 @@ public class GameLoop {
         GameRenderer renderer = new GameRenderer(gameUI, terminal);
         NonBlockingReader reader = terminal.reader();
 
+        renderer.start();
         try {
             // Enable mouse tracking
             terminal.trackMouse(Terminal.MouseTracking.Normal);
@@ -35,7 +36,6 @@ public class GameLoop {
                     });
                 }
 
-                renderer.render();
                 gameState.tick();
 
                 try {
@@ -47,8 +47,6 @@ public class GameLoop {
                     Thread.currentThread().interrupt();
                     break;
                 }
-
-
             }
         } finally {
             // Disable mouse tracking before exiting
