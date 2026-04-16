@@ -15,22 +15,17 @@ public class VerticalLayout implements Layout{
     //TODO: Create proper lay-outing and rendering system.
     public VerticalLayout(int startX, int startY) {
         this.x = startX;
-        this.currentY = 1;
-
-        addSpacing(startY);
+        this.currentY = startY;
     }
 
     @Override
     public void addElement(Renderable renderable) {
         renderable.setPos(x, currentY);
-        renderables.add(renderable);
-        currentY++;
-    }
+        BoundingBox bounds = renderable.getBBox();
 
-    public void addSpacing(int lines) {
-        for (int i = 0; i < lines; i++) {
-            addElement(new EmptyLine());
-        }
+        renderables.add(renderable);
+
+        currentY += bounds.getHeight();
     }
 
     @Override

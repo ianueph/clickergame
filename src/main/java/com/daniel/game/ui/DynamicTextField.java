@@ -1,5 +1,6 @@
 package com.daniel.game.ui;
 
+import com.daniel.game.layout.FrameConstructor;
 import org.jline.utils.AttributedString;
 
 import java.util.function.Supplier;
@@ -18,6 +19,11 @@ public class DynamicTextField extends TextField implements Renderable{
         return new AttributedString(
                 padLeft(formatText(text)),
                 getStyle());
+    }
+
+    @Override
+    public void render(FrameConstructor frame) {
+        frame.drawText(formatText(text), getStyle(), x, y);
     }
 
     private String formatText(String input) {

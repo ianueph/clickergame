@@ -19,10 +19,13 @@ public class BoundingBox {
      */
 
     private BoundingBox(int x0, int y0, int x1, int y1) {
-        this.x0 = x0;
-        this.y0 = y0;
-        this.x1 = x1;
-        this.y1 = y1;
+
+        // +1 because terminal grid and frame grid is offset by x = 1 and y = 1
+        // specifically, frame grid is ahead by 1 x and 1 y, so adjust BBoxes accordingly.
+        this.x0 = x0 + 1;
+        this.y0 = y0 + 1;
+        this.x1 = x1 + 1;
+        this.y1 = y1 + 1;
     }
 
     public static BoundingBox fromCorner(int x0, int y0, int x1, int y1) {
@@ -41,15 +44,7 @@ public class BoundingBox {
         return x0;
     }
 
-    public int getY0() {
-        return y0;
-    }
-
-    public int getX1() {
-        return x1;
-    }
-
-    public int getY1() {
-        return y1;
+    public int getHeight() {
+        return y1 - y0 + 1;
     }
 }

@@ -1,6 +1,7 @@
 package com.daniel.game.core;
 
 import com.daniel.game.config.Settings;
+import com.daniel.game.layout.FrameConstructor;
 import com.daniel.game.ui.Renderable;
 import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
@@ -24,9 +25,14 @@ public class GameRenderer extends Thread{
     }
 
     public void render() {
-        List<AttributedString> lines = gameUI.getRenderables().stream()
-                        .map(Renderable::getAttrString)
-                        .toList();
+        FrameConstructor frame = new FrameConstructor(terminal.getWidth(), terminal.getHeight());
+
+        for (Renderable r: gameUI.getRenderables()) {
+            r.render(frame);
+        }
+
+        List<AttributedString> lines = frame.getFrame();
+
         display.update(lines, 1);
 
         terminal.flush();

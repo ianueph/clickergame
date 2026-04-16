@@ -21,8 +21,6 @@ public class GameUI {
 
         layout.addElement(new DynamicTextField("Currency: %,.3f",gameState::getCurrency));
         layout.addElement(new DynamicTextField("Income: %,.3f /sec", gameState::getTotalIncomePerSecond));
-
-        layout.addSpacing(2);
         layout.addElement(new IncrementButton("Increment", gameState::increment));
 
         setupBuildings(layout);
@@ -30,11 +28,9 @@ public class GameUI {
     }
 
     private void setupBuildings(VerticalLayout layout) {
-        layout.addSpacing(2); //margin top 2 lines
         layout.addElement(new TextField("Buildings"));
 
         gameState.getBuildings().forEach((name, building) -> {
-            layout.addSpacing(1);
             layout.addElement(new BuildingButton(
                     String.format("%s (%,.3f/s)", name, building.getBaseIncome()),
                     () -> gameState.buyBuilding(building)
@@ -45,11 +41,9 @@ public class GameUI {
     }
 
     private void setupUpgrades(VerticalLayout layout) {
-        layout.addSpacing(2);
         layout.addElement(new TextField("Upgrades"));
 
         gameState.getUpgrades().forEach((name, upgrade) -> {
-            layout.addSpacing(1);
             layout.addElement(new Button(
                     String.format("%s (+%,.3fx %s)", name, upgrade.getBaseModifier(), upgrade.getTargetBuildingID()),
                     () -> gameState.buyUpgrade(upgrade)

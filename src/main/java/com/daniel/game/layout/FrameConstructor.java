@@ -11,7 +11,7 @@ public class FrameConstructor {
     private final FrameCell[][] grid;
 
     public FrameConstructor(int size_x, int size_y) {
-        this.grid = new FrameCell[size_x][size_y];
+        this.grid = new FrameCell[size_y][size_x];
         for (int i = 0; i < size_y; i++) {
             for (int j = 0; j < size_x; j++) {
                 grid[i][j] = new FrameCell(' ', AttributedStyle.DEFAULT);

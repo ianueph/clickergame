@@ -26,9 +26,13 @@ public abstract class UIComponent implements Renderable{
     }
 
     @Override
-    public abstract AttributedString getAttrString();
+    public BoundingBox getBBox() {
+        return this.bounds;
+    }
 
     @Override
+    public abstract AttributedString getAttrString();
+
     public int getX() {
         return x;
     }
