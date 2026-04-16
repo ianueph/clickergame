@@ -19,7 +19,7 @@ public class TextField extends UIComponent implements Renderable{
     }
 
     protected String padLeft(String input) {
-        return " ".repeat(getX()) + input;
+        return " ".repeat(getX() - 1) + input;
     }
 
     protected AttributedStyle getStyle() {
