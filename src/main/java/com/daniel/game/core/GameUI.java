@@ -1,5 +1,6 @@
 package com.daniel.game.core;
 
+import com.daniel.game.layout.Layout;
 import com.daniel.game.layout.VerticalLayout;
 import com.daniel.game.ui.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class GameUI {
 
     private final GameState gameState;
-    private List<Renderable> renderables = new ArrayList<>();
+    private final VerticalLayout layout = new VerticalLayout(5, 3);
 
     public GameUI(GameState gameState) {
         this.gameState = gameState;
@@ -17,7 +18,6 @@ public class GameUI {
     }
 
     private void setupUI() {
-        VerticalLayout layout = new VerticalLayout(5, 3);
 
         layout.addElement(new DynamicTextField("Currency: %,.3f",gameState::getCurrency));
         layout.addElement(new DynamicTextField("Income: %,.3f /sec", gameState::getTotalIncomePerSecond));
@@ -27,8 +27,6 @@ public class GameUI {
 
         setupBuildings(layout);
         setupUpgrades(layout);
-
-        renderables = layout.getRenderables();
     }
 
     private void setupBuildings(VerticalLayout layout) {
@@ -62,7 +60,7 @@ public class GameUI {
     }
 
     public void handleClick(int x, int y) {
-        for (Renderable r : renderables) {
+        for (Renderable r : layout.getRenderables()) {
             if (r instanceof Clickable clickable) {
                 if (clickable.isInside(x, y)) {
                     clickable.click();
@@ -73,6 +71,6 @@ public class GameUI {
     }
 
     public List<Renderable> getRenderables() {
-        return this.renderables;
+        return layout.getRenderables();
     }
 }
