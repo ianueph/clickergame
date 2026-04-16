@@ -1,5 +1,6 @@
 package com.daniel.game.core;
 
+import com.daniel.game.layout.Inset;
 import com.daniel.game.layout.VerticalLayout;
 import com.daniel.game.ui.*;
 
@@ -19,35 +20,49 @@ public class GameUI {
 
         layout.addElement(new DynamicTextField("Currency: %,.3f",gameState::getCurrency));
         layout.addElement(new DynamicTextField("Income: %,.3f /sec", gameState::getTotalIncomePerSecond));
-        layout.addElement(new IncrementButton("Increment", gameState::increment));
+        layout.addElement(new IncrementButton("Increment", gameState::increment, Inset.symmetric(1, 0)));
 
         setupBuildings(layout);
         setupUpgrades(layout);
     }
 
     private void setupBuildings(VerticalLayout layout) {
-        layout.addElement(new TextField("Buildings"));
+        layout.addElement(new TextField("Buildings", Inset.of(1)));
 
         gameState.getBuildings().forEach((name, building) -> {
-            layout.addElement(new BuildingButton(
+            layout.addElement(new Button(
                     String.format("%s (%,.3f/s)", name, building.getBaseIncome()),
-                    () -> gameState.buyBuilding(building)
+                    () -> gameState.buyBuilding(building),
+                    Inset.of(1)
             ));
-            layout.addElement(new DynamicTextField("Rate: %,.3f /t", building::getIncomePerTick));
-            layout.addElement(new DynamicTextField("Cost: %,.3f", building::getCost));
+            layout.addElement(new DynamicTextField(
+                            "Rate: %,.3f /t",
+                            building::getIncomePerTick
+            ));
+            layout.addElement(new DynamicTextField(
+                    "Cost: %,.3f",
+                    building::getCost
+            ));
         });
     }
 
     private void setupUpgrades(VerticalLayout layout) {
-        layout.addElement(new TextField("Upgrades"));
+        layout.addElement(new TextField("Upgrades", Inset.of(2)));
 
         gameState.getUpgrades().forEach((name, upgrade) -> {
             layout.addElement(new Button(
                     String.format("%s (+%,.3fx %s)", name, upgrade.getBaseModifier(), upgrade.getTargetBuildingID()),
-                    () -> gameState.buyUpgrade(upgrade)
+                    () -> gameState.buyUpgrade(upgrade),
+                    Inset.of(1)
             ));
-            layout.addElement(new DynamicTextField("Current modifier: %,.3fx", upgrade::getModifier));
-            layout.addElement(new DynamicTextField("Cost: %,.3f", upgrade::getCost));
+            layout.addElement(new DynamicTextField(
+                    "Current modifier: %,.3fx",
+                    upgrade::getModifier
+            ));
+            layout.addElement(new DynamicTextField(
+                    "Cost: %,.3f",
+                    upgrade::getCost
+            ));
         });
     }
 

@@ -1,10 +1,7 @@
 package com.daniel.game.layout;
 
 public class BoundingBox {
-    private final int x0;
-    private final int y0;
-    private final int x1;
-    private final int y1;
+    private final int x0, y0, x1, y1;
 
     /*
     (x0,y0)---------------------(x1,y0)

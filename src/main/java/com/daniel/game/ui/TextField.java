@@ -2,14 +2,20 @@ package com.daniel.game.ui;
 
 import com.daniel.game.layout.BoundingBox;
 import com.daniel.game.layout.FrameConstructor;
+import com.daniel.game.layout.Inset;
 import org.jline.utils.AttributedStyle;
 
-public class TextField extends UIComponent implements Renderable{
+public class TextField extends UIComponent implements Renderable {
 
     protected String text;
 
     public TextField(String text) {
         this.text = text;
+    }
+
+    public TextField(String text, Inset margin) {
+        this.text = text;
+        this.margin = margin;
     }
 
     protected AttributedStyle getStyle() {

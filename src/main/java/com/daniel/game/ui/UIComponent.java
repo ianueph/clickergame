@@ -1,15 +1,20 @@
 package com.daniel.game.ui;
 
 import com.daniel.game.layout.BoundingBox;
-import com.daniel.game.layout.Insets;
+import com.daniel.game.layout.Inset;
 
 public abstract class UIComponent implements Renderable{
 
     protected int x;
     protected int y;
-    protected Insets margin;
-    protected Insets padding;
+    protected Inset margin;
+    protected Inset padding;
     protected BoundingBox bounds;
+
+    public UIComponent() {
+        this.margin = Inset.none();
+        this.padding = Inset.none();
+    }
 
     @Override
     public void setPos(int x, int y) {
@@ -24,4 +29,12 @@ public abstract class UIComponent implements Renderable{
 
     @Override
     public abstract BoundingBox getBounds();
+
+    public int getMarginTop() {
+        return margin.top;
+    }
+
+    public int getMarginBottom() {
+        return margin.bottom;
+    }
 }
