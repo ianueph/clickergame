@@ -2,7 +2,6 @@ package com.daniel.game.ui;
 
 import com.daniel.game.layout.BoundingBox;
 import com.daniel.game.layout.FrameConstructor;
-import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
 public class Button extends UIComponent implements Renderable, Clickable{
@@ -13,13 +12,6 @@ public class Button extends UIComponent implements Renderable, Clickable{
     public Button(String text, Runnable action) {
         this.text = text;
         this.action = action;
-    }
-
-    @Override
-    public AttributedString getAttrString() {
-        return new AttributedString(
-                " ".repeat(getX() - 1) + text,
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.BLUE).bold());
     }
 
     @Override
@@ -47,11 +39,7 @@ public class Button extends UIComponent implements Renderable, Clickable{
     }
 
     @Override
-    public BoundingBox getBBox() {
+    public BoundingBox getBounds() {
         return bounds;
-    }
-
-    public int getX() {
-        return bounds.getX0();
     }
 }

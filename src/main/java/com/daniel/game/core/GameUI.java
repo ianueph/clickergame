@@ -1,10 +1,8 @@
 package com.daniel.game.core;
 
-import com.daniel.game.layout.Layout;
 import com.daniel.game.layout.VerticalLayout;
 import com.daniel.game.ui.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameUI {

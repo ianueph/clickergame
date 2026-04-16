@@ -2,7 +2,6 @@ package com.daniel.game.ui;
 
 import com.daniel.game.layout.BoundingBox;
 import com.daniel.game.layout.FrameConstructor;
-import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 
 public class TextField extends UIComponent implements Renderable{
@@ -11,17 +10,6 @@ public class TextField extends UIComponent implements Renderable{
 
     public TextField(String text) {
         this.text = text;
-    }
-
-    @Override
-    public AttributedString getAttrString() {
-        return new AttributedString(
-                padLeft(text),
-                getStyle());
-    }
-
-    protected String padLeft(String input) {
-        return " ".repeat(getX() - 1) + input;
     }
 
     protected AttributedStyle getStyle() {
@@ -36,7 +24,7 @@ public class TextField extends UIComponent implements Renderable{
     }
 
     @Override
-    public BoundingBox getBBox() {
+    public BoundingBox getBounds() {
         return BoundingBox.fromPosAndSize(x, y, text.length(), 1);
     }
 }

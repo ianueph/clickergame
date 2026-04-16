@@ -40,10 +40,6 @@ public class BoundingBox {
         return px >= x0 && px <= x1 && py >= y0 && py <= y1;
     }
 
-    public int getX0() {
-        return x0;
-    }
-
     public int getHeight() {
         return y1 - y0 + 1;
     }

@@ -1,7 +1,6 @@
 package com.daniel.game.ui;
 
 import com.daniel.game.layout.FrameConstructor;
-import org.jline.utils.AttributedString;
 
 import java.util.function.Supplier;
 
@@ -12,13 +11,6 @@ public class DynamicTextField extends TextField implements Renderable{
     public DynamicTextField(String text, Supplier<Double> fieldSupplier) {
         super(text);
         this.fieldSupplier = fieldSupplier;
-    }
-
-    @Override
-    public AttributedString getAttrString() {
-        return new AttributedString(
-                padLeft(formatText(text)),
-                getStyle());
     }
 
     @Override

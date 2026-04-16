@@ -1,6 +1,5 @@
 package com.daniel.game.layout;
 
-import com.daniel.game.ui.EmptyLine;
 import com.daniel.game.ui.Renderable;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class VerticalLayout implements Layout{
     @Override
     public void addElement(Renderable renderable) {
         renderable.setPos(x, currentY);
-        BoundingBox bounds = renderable.getBBox();
+        BoundingBox bounds = renderable.getBounds();
 
         renderables.add(renderable);
 

@@ -18,24 +18,10 @@ public abstract class UIComponent implements Renderable{
     }
 
     @Override
-    public void setBBox(int x0, int y0, int x1, int y1) {
-        this.bounds = BoundingBox.fromCorner(x0, y0, x1, y1);
-    }
-
-    @Override
     public void setBBox(BoundingBox bBox) {
         this.bounds = bBox;
     }
 
     @Override
-    public BoundingBox getBBox() {
-        return this.bounds;
-    }
-
-    @Override
-    public abstract AttributedString getAttrString();
-
-    public int getX() {
-        return x;
-    }
+    public abstract BoundingBox getBounds();
 }
